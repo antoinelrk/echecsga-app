@@ -1,0 +1,276 @@
+@import "Normalize";
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    background-color: $c1;
+
+    .background-element {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        z-index: 49;
+
+        figure {
+            position: absolute;
+
+            &.horse {
+                bottom: -64px;
+                left: -345px;
+                width: 800px;
+                opacity: .1;
+            }
+
+            &.pawn {
+                bottom: -64px;
+                right: -256px;
+                width: 512px;
+                opacity: .1;
+            }
+        }
+    }
+
+    #app {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 100vh;
+        z-index: 50;
+
+        .overlay {
+            position: fixed;
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, .5);
+            z-index: 95;
+            transform: scale(0);
+
+            &.active {
+                transform: scale(1);
+
+                form.login-form {
+                    transition: transform .25s ease;
+                    transform: scale(1);
+                }
+            }
+
+            @import "login.scss";
+        }
+
+        header {
+            display: flex;
+            position: relative;
+            width: 100%;
+            height: 100px;
+            background-color: $c1;
+            z-index: 90;
+
+            img.app-logo {
+                display: flex;
+                margin: auto 64px;
+                height: 90%;
+                width: auto;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -8px;
+                left: 0;
+                width: 100%;
+                height: 8px;
+                background-color: #EEEEEE;
+                z-index: 91;
+            }
+
+            .menu {
+                display: flex;
+                margin: 0 auto 0 0;
+                color: $c4;
+
+                a {
+                    display: flex;
+                    padding: 0 16px;
+                    width: auto;
+                    height: 100%;
+
+                    figure {
+                        display: flex;
+                        margin: auto 2px auto 0;
+                        height: 16px;
+                        transition: .25s linear fill;
+                    }
+
+                    span {
+                        display: flex;
+                        margin: auto 0 auto 2px;
+                        height: 16px;
+                        font-size: 16px;
+                        font-weight: 600;
+                        transition: .25s linear color;
+                    }
+
+                    &:hover {
+                        figure {
+                            fill: $c3;
+                            transition: .25s linear fill;
+                        }
+
+                        span {
+                            color: $c3;
+                            transition: .25s linear color;
+                        }
+                    }
+                }
+            }
+
+            .auth {
+                display: flex;
+                margin: 0 48px 0 auto;
+
+                button {
+                    display: flex;
+                    padding: 0 16px;
+                    width: auto;
+                    height: 100%;
+                    cursor: pointer;
+                    background-color: transparent;
+                    border: none;
+
+                    figure {
+                        display: flex;
+                        margin: auto 2px auto 0;
+                        height: 16px;
+                        transition: .25s linear fill;
+                    }
+
+                    span {
+                        display: flex;
+                        margin: auto 0 auto 2px;
+                        height: 16px;
+                        font-size: 16px;
+                        font-weight: 600;
+                        transition: .25s linear color;
+                    }
+
+                    &:hover {
+                        span {
+                            color: $c3;
+                            transition: .25s linear color;
+                        }
+
+                        figure {
+                            fill: $c3;
+                            transition: .25s linear fill;
+                        }
+                    }
+                }
+            }
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            padding: 64px 0;
+            margin: auto;
+            max-width: 1100px;
+            
+            @import "pages/home";
+            @import "pages/articles";
+            @import "pages/links";
+            @import "pages/contact";
+
+            /* Errors */
+            .e503 {
+                display: flex;
+                margin: 0 auto;
+                flex-direction: column;
+    
+                h1 {
+                    display: flex;
+                    margin: 0 auto;
+                    flex-direction: row;
+                    width: auto;
+                    font-family: "OpenSans", sans-serif;
+                    font-size: 18px;
+                    text-transform: uppercase;
+                    font-weight: 800;
+                }
+            }
+        }
+
+        footer {
+            position: relative;
+            display: flex;
+            margin: auto 0 0 0;
+            width: 100%;
+            height: 40px;
+            background-color: $c2;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: -8px;
+                left: 0;
+                width: 100%;
+                height: 8px;
+                background-color: #eeeeee;
+            }
+
+            .copyright {
+                display: flex;
+                margin: 0 auto;
+                width: auto;
+                height: 100%;
+                font-style: italic;
+
+                figure.copy {
+                    display: flex;
+                    margin: auto 4px;
+                    width: 16px;
+                    height: 16px;
+                }
+
+                span {
+                    display: flex;
+                    margin: auto 0 auto 0;
+
+                    &.bold {
+                        margin: auto 4px auto 0;
+                        font-weight: 600;
+                    }
+                }
+
+                a {
+                    display: flex;
+                    margin: auto 0 auto 4px;
+                    font-weight: 800;
+                    transition: color .1s linear;
+
+                    figure {
+                        display: flex;
+                        margin: auto 0 auto 4px;
+                        width: 16px;
+                        transition: fill .1s linear;
+                    }
+
+                    &:hover {
+                        color: $psblue;
+                        transition: color .1s linear;
+
+                        figure {
+                            fill: $psblue;
+                            transition: fill .1s linear;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Ajouter le fond de site ici
+    }
+}

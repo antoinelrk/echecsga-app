@@ -1,0 +1,47 @@
+version: "3.8"
+services: 
+    echecsga_app:
+        build: 
+            context: .
+            dockerfile: ./docker/Website.dockerfile
+        container_name: echecsga_app
+        depends_on: 
+            - echecsga_database
+        volumes: 
+            - ./:/var/www/html
+            - ./:/script:ro
+        ports: 
+            - "80:80"
+        networks: 
+            - db
+    echecsga_database:
+        image: mariadb
+        command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+        restart: always
+        container_name: echecsga_database
+        volumes: 
+            - echecsga_db_storage:/var/lib/mysql
+        environment: 
+            - MYSQL_ROOT_PASSWORD=admin
+            - MYSQL_PASSWORD=changeme
+            - MYSQL_DATABASE=echecsga
+            - MYSQL_USER=echecsga
+        networks: 
+            - db
+    echecsga_pma:
+        image: phpmyadmin
+        restart: always
+        container_name: echecsga_pma
+        depends_on: 
+            - echecsga_database
+        ports:
+            - "8081:80"
+        environment:
+            - PMA_ARBITRARY=1
+        networks: 
+            - db
+networks: 
+    db:
+        name: db
+volumes: 
+    echecsga_db_storage:

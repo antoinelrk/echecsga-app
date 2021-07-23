@@ -1,0 +1,114 @@
+form.login-form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 512px;
+    transition: transform .05s ease;
+    transform: scale(0);
+    background-color: white;
+    filter: drop-shadow(3px 3px 16px rgba(0, 0, 0, .16));
+    border-radius: 8px;
+
+    .form-app-logo {
+        display: flex;
+        margin: 8px auto;
+        width: 200px;
+        height: 200px;
+    }
+
+    .form-group {
+        display: flex;
+        margin: 0 auto;
+        width: auto;
+        border-radius: 4px;
+        border: 1px solid $c4;
+        overflow: hidden;
+
+        label {
+            display: flex;
+
+            figure {
+                display: flex;
+                margin: 8px;
+                width: 24px;
+                height: 24px
+            }
+        }
+
+        input {
+            display: flex;
+            width: 250px;
+            height: 40px;
+            border: none;
+            background-color: transparent;
+            color: $c3;
+
+            &::placeholder {
+                text-transform: uppercase;
+                font-style: italic;
+                font-weight: 200;
+            }
+        }
+    }
+
+    .form-group-raw {
+        display: flex;
+        margin: 4px auto;
+        width: 290px;
+
+        a.reset-password {
+            display: flex;
+            margin: 0;
+            font-family: "Open Sans", sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            font-style: italic;
+
+            &:hover {
+                text-decoration: underline;
+                color: $c3;
+            }
+        }
+    }
+
+    button.btn-submit {
+        display: flex;
+        margin: 32px auto;
+        border: none;
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        cursor: pointer;
+
+        &:hover {
+            figure {
+                fill: $c3;
+                transition: fill .15s linear;
+            }
+
+            span {
+                color: $c3;
+                transition: color .15s linear;
+            }
+        }
+
+        figure {
+            display: flex;
+            margin: 8px 16px 8px 8px;
+            width: 24px;
+            height: 24px;
+            fill: $c4;
+            transition: fill .15s linear;
+        }
+
+        span {
+            display: flex;
+            margin: auto 16px auto 0;
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 18px;
+            color: $c4;
+            transition: color .15 linear;
+        }
+    }
+}

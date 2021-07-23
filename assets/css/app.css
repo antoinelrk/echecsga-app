@@ -1,0 +1,817 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "OpenSans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+body .background-element {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 49;
+}
+
+body .background-element figure {
+  position: absolute;
+}
+
+body .background-element figure.horse {
+  bottom: -64px;
+  left: -345px;
+  width: 800px;
+  opacity: 0.1;
+}
+
+body .background-element figure.pawn {
+  bottom: -64px;
+  right: -256px;
+  width: 512px;
+  opacity: 0.1;
+}
+
+body #app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  z-index: 50;
+}
+
+body #app .overlay {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 95;
+  transform: scale(0);
+}
+
+body #app .overlay.active {
+  transform: scale(1);
+}
+
+body #app .overlay.active form.login-form {
+  transition: transform 0.25s ease;
+  transform: scale(1);
+}
+
+body #app .overlay form.login-form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 512px;
+  transition: transform 0.05s ease;
+  transform: scale(0);
+  background-color: white;
+  filter: drop-shadow(3px 3px 16px rgba(0, 0, 0, 0.16));
+  border-radius: 8px;
+}
+
+body #app .overlay form.login-form .form-app-logo {
+  display: flex;
+  margin: 8px auto;
+  width: 200px;
+  height: 200px;
+}
+
+body #app .overlay form.login-form .form-group {
+  display: flex;
+  margin: 0 auto;
+  width: auto;
+  border-radius: 4px;
+  border: 1px solid #261c1a;
+  overflow: hidden;
+}
+
+body #app .overlay form.login-form .form-group label {
+  display: flex;
+}
+
+body #app .overlay form.login-form .form-group label figure {
+  display: flex;
+  margin: 8px;
+  width: 24px;
+  height: 24px;
+}
+
+body #app .overlay form.login-form .form-group input {
+  display: flex;
+  width: 250px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  color: #96675a;
+}
+
+body #app .overlay form.login-form .form-group input::-moz-placeholder {
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: 200;
+}
+
+body #app .overlay form.login-form .form-group input:-ms-input-placeholder {
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: 200;
+}
+
+body #app .overlay form.login-form .form-group input::placeholder {
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: 200;
+}
+
+body #app .overlay form.login-form .form-group-raw {
+  display: flex;
+  margin: 4px auto;
+  width: 290px;
+}
+
+body #app .overlay form.login-form .form-group-raw a.reset-password {
+  display: flex;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+body #app .overlay form.login-form .form-group-raw a.reset-password:hover {
+  text-decoration: underline;
+  color: #96675a;
+}
+
+body #app .overlay form.login-form button.btn-submit {
+  display: flex;
+  margin: 32px auto;
+  border: none;
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+body #app .overlay form.login-form button.btn-submit:hover figure {
+  fill: #96675a;
+  transition: fill 0.15s linear;
+}
+
+body #app .overlay form.login-form button.btn-submit:hover span {
+  color: #96675a;
+  transition: color 0.15s linear;
+}
+
+body #app .overlay form.login-form button.btn-submit figure {
+  display: flex;
+  margin: 8px 16px 8px 8px;
+  width: 24px;
+  height: 24px;
+  fill: #261c1a;
+  transition: fill 0.15s linear;
+}
+
+body #app .overlay form.login-form button.btn-submit span {
+  display: flex;
+  margin: auto 16px auto 0;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 18px;
+  color: #261c1a;
+  transition: color 0.15 linear;
+}
+
+body #app header {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100px;
+  background-color: #ffffff;
+  z-index: 90;
+}
+
+body #app header img.app-logo {
+  display: flex;
+  margin: auto 64px;
+  height: 90%;
+  width: auto;
+}
+
+body #app header::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background-color: #EEEEEE;
+  z-index: 91;
+}
+
+body #app header .menu {
+  display: flex;
+  margin: 0 auto 0 0;
+  color: #261c1a;
+}
+
+body #app header .menu a {
+  display: flex;
+  padding: 0 16px;
+  width: auto;
+  height: 100%;
+}
+
+body #app header .menu a figure {
+  display: flex;
+  margin: auto 2px auto 0;
+  height: 16px;
+  transition: 0.25s linear fill;
+}
+
+body #app header .menu a span {
+  display: flex;
+  margin: auto 0 auto 2px;
+  height: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.25s linear color;
+}
+
+body #app header .menu a:hover figure {
+  fill: #96675a;
+  transition: 0.25s linear fill;
+}
+
+body #app header .menu a:hover span {
+  color: #96675a;
+  transition: 0.25s linear color;
+}
+
+body #app header .auth {
+  display: flex;
+  margin: 0 48px 0 auto;
+}
+
+body #app header .auth button {
+  display: flex;
+  padding: 0 16px;
+  width: auto;
+  height: 100%;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+body #app header .auth button figure {
+  display: flex;
+  margin: auto 2px auto 0;
+  height: 16px;
+  transition: 0.25s linear fill;
+}
+
+body #app header .auth button span {
+  display: flex;
+  margin: auto 0 auto 2px;
+  height: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.25s linear color;
+}
+
+body #app header .auth button:hover span {
+  color: #96675a;
+  transition: 0.25s linear color;
+}
+
+body #app header .auth button:hover figure {
+  fill: #96675a;
+  transition: 0.25s linear fill;
+}
+
+body #app main {
+  display: flex;
+  flex-direction: column;
+  padding: 64px 0;
+  margin: auto;
+  max-width: 1100px;
+  /* Errors */
+}
+
+body #app main .home {
+  display: flex;
+  position: relative;
+  margin: 0;
+  width: 100%;
+  color: #261c1a;
+}
+
+body #app main .home .left {
+  display: flex;
+  margin: 0 auto 0 0;
+  width: calc(100% - (385px + 64px));
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+body #app main .home .left .no-article {
+  display: flex;
+  margin: 256px auto 0 auto;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+body #app main .home .left .articles-component {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+body #app main .home .left .articles-component .article {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 32px 0;
+}
+
+body #app main .home .left .articles-component .article .title-group {
+  position: relative;
+  display: flex;
+  padding: 0 0 8px 0;
+  margin: 0 0 8px 0;
+  flex-direction: column;
+}
+
+body #app main .home .left .articles-component .article .title-group h1.title {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+body #app main .home .left .articles-component .article .title-group h3.created_at {
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 400;
+}
+
+body #app main .home .left .articles-component .article .title-group:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #96675a;
+}
+
+body #app main .home .left .articles-component .article .content-group {
+  display: flex;
+  flex-direction: column;
+}
+
+body #app main .home .left .articles-component .article .content-group p {
+  display: flex;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+body #app main .home .left .articles-component .article .content-group a.read-more {
+  display: flex;
+  margin: 8px 0 0 auto;
+  width: auto;
+  font-weight: 600;
+  font-style: italic;
+  font-size: 14px;
+  color: #96675a;
+}
+
+body #app main .home .left .articles-component .article:last-child {
+  margin: 0 0 0 0;
+}
+
+body #app main .home .right {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  display: flex;
+  padding: 8px 0 0 0;
+  margin: 0 0 0 auto;
+  width: 385px;
+  height: 80vh;
+  flex-direction: column;
+}
+
+body #app main .home .right .flyer {
+  display: flex;
+  width: 100%;
+  min-height: 545px;
+  background-color: #232323;
+}
+
+body #app main .home .right .flyer img {
+  display: flex;
+  width: 100%;
+}
+
+body #app main .home .right .informations {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+
+body #app main .home .right .informations .location {
+  display: flex;
+  margin: 8px 0 0 0;
+}
+
+body #app main .home .right .informations .location figure {
+  width: 16px;
+  height: 16px;
+  fill: #96675a;
+}
+
+body #app main .home .right .informations .location span {
+  display: flex;
+  margin: 0 0 0 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+body #app main .home .right .informations .schedule {
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0 0 0;
+}
+
+body #app main .home .right .informations .schedule .line {
+  display: flex;
+  padding: 0 0 0 20px;
+}
+
+body #app main .home .right .informations .schedule .line:first-child {
+  padding: 0 0 0 0;
+}
+
+body #app main .home .right .informations .schedule .line:first-child figure {
+  width: 16px;
+  height: 16px;
+  fill: #96675a;
+}
+
+body #app main .home .right .informations .schedule .line:first-child span {
+  margin: 0 auto 0 4px;
+}
+
+body #app main .home .right .informations .schedule .line:first-child span:last-child {
+  margin: 0 0 0 auto;
+}
+
+body #app main .home .right .informations .schedule .line span {
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+body #app main .home .right .informations .schedule .line span:first-child {
+  margin: 0 auto 0 0;
+}
+
+body #app main .articles {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+}
+
+body #app main .articles .search-component {
+  display: flex;
+  margin: 0 auto;
+  width: auto;
+}
+
+body #app main .articles .search-component input {
+  display: flex;
+  padding: 8px 16px;
+  width: 450px;
+  height: 100%;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  border: none;
+  color: #96675a;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+body #app main .articles .articles-container {
+  display: flex;
+  margin: 64px 0;
+  flex-direction: column;
+}
+
+body #app main .articles .articles-container .article {
+  display: flex;
+  margin: 8px 0 8px 0;
+  width: 100%;
+}
+
+body #app main .articles .articles-container .article:first-child {
+  margin: 0 0 8px 0;
+}
+
+body #app main .articles .articles-container .article a {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 8px 16px;
+  transition: transform 0.15s linear;
+}
+
+body #app main .articles .articles-container .article a:hover {
+  transform: translateX(8px);
+  transition: transform 0.15s linear;
+  color: #96675a;
+}
+
+body #app main .articles .articles-container .article span {
+  display: flex;
+  flex-direction: column;
+  margin: auto 0 auto auto;
+  font-style: italic;
+  font-size: 14px;
+  color: #261c1a;
+}
+
+body #app main .links {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+}
+
+body #app main .links .search-component {
+  display: flex;
+  margin: 0 auto;
+  width: auto;
+}
+
+body #app main .links .search-component input {
+  display: flex;
+  padding: 8px 16px;
+  width: 450px;
+  height: 100%;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  border: none;
+  color: #96675a;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+body #app main .links .links-container {
+  display: flex;
+  margin: 64px 0;
+  flex-direction: column;
+}
+
+body #app main .links .links-container .link {
+  display: flex;
+  margin: 8px 0 8px 0;
+  width: 100%;
+}
+
+body #app main .links .links-container .link:hover a {
+  transform: translateX(8px);
+  transition: transform 0.15s linear;
+  color: #96675a;
+}
+
+body #app main .links .links-container .link:first-child {
+  margin: 0 0 8px 0;
+}
+
+body #app main .links .links-container .link a {
+  display: flex;
+  margin: auto 0 auto auto;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.15s linear;
+}
+
+body #app main .links .links-container .link a span.title {
+  display: flex;
+  margin: 0 auto 0 0;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 8px 16px;
+}
+
+body #app main .links .links-container .link a figure {
+  display: flex;
+  margin: auto 4px auto auto;
+  width: 16px;
+  width: 16px;
+  fill: #261c1a;
+}
+
+body #app main .links .links-container .link a span.link {
+  display: flex;
+  margin: auto 0;
+  width: auto;
+  height: auto;
+  color: #261c1a;
+  text-decoration: underline;
+  font-style: italic;
+  font-size: 16px;
+}
+
+body #app main .contact {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+}
+
+body #app main .contact form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-family: "Open Sans", sans-serif;
+}
+
+body #app main .contact form .form-group {
+  display: flex;
+  margin: 32px 0 0 0;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+body #app main .contact form .form-group:first-child {
+  margin: 0 0 0 0;
+}
+
+body #app main .contact form .form-group label {
+  display: flex;
+  margin: 0 0 8px 0;
+  font-weight: 600;
+  color: #96675a;
+}
+
+body #app main .contact form .form-group input {
+  display: flex;
+  width: 400px;
+  height: 40px;
+  border: solid 1px #261c1a;
+  padding: 8px;
+}
+
+body #app main .contact form .form-group select {
+  display: flex;
+  width: 400px;
+  height: 40px;
+  border: solid 1px #261c1a;
+  padding: 8px;
+}
+
+body #app main .contact form .form-area {
+  display: flex;
+  margin: 32px 0 0 0;
+  flex-direction: column;
+}
+
+body #app main .contact form .form-area textarea {
+  display: flex;
+  padding: 8px;
+  border: solid 1px #261c1a;
+  min-height: 256px;
+  resize: vertical;
+  font-size: 14px;
+}
+
+body #app main .contact form span.disclaim {
+  display: flex;
+  margin: 8px 0 0 0;
+  font-size: 12px;
+  color: #B74242;
+}
+
+body #app main .contact form button.btn-submit {
+  display: flex;
+  margin: 8px auto 0 auto;
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+  background-color: transparent;
+  border: solid 1px black;
+  border-radius: none;
+  transition: border-radius 0.5s ease;
+}
+
+body #app main .contact form button.btn-submit:hover {
+  border-radius: 100%;
+  transition: border-radius 0.5s ease;
+}
+
+body #app main .contact form button.btn-submit figure {
+  display: flex;
+  margin: auto;
+  width: 32px;
+}
+
+body #app main .e503 {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+body #app main .e503 h1 {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+  width: auto;
+  font-family: "OpenSans", sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+body #app footer {
+  position: relative;
+  display: flex;
+  margin: auto 0 0 0;
+  width: 100%;
+  height: 40px;
+  background-color: #f9f9f9;
+}
+
+body #app footer::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background-color: #eeeeee;
+}
+
+body #app footer .copyright {
+  display: flex;
+  margin: 0 auto;
+  width: auto;
+  height: 100%;
+  font-style: italic;
+}
+
+body #app footer .copyright figure.copy {
+  display: flex;
+  margin: auto 4px;
+  width: 16px;
+  height: 16px;
+}
+
+body #app footer .copyright span {
+  display: flex;
+  margin: auto 0 auto 0;
+}
+
+body #app footer .copyright span.bold {
+  margin: auto 4px auto 0;
+  font-weight: 600;
+}
+
+body #app footer .copyright a {
+  display: flex;
+  margin: auto 0 auto 4px;
+  font-weight: 800;
+  transition: color 0.1s linear;
+}
+
+body #app footer .copyright a figure {
+  display: flex;
+  margin: auto 0 auto 4px;
+  width: 16px;
+  transition: fill 0.1s linear;
+}
+
+body #app footer .copyright a:hover {
+  color: #63a7cf;
+  transition: color 0.1s linear;
+}
+
+body #app footer .copyright a:hover figure {
+  fill: #63a7cf;
+  transition: fill 0.1s linear;
+}
+
