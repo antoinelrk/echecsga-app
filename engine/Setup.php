@@ -5,6 +5,10 @@ class Setup {
     public $env = [];
     private $envfile = ".env";
 
+    /**
+     * Vérifier si le fichier `.env` existe, le cas échéant, le créer (Copier/Coller).
+     */
+
     public function __construct() {
         $datarow = fopen($this->envfile, "rb");
 

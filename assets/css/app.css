@@ -125,12 +125,6 @@ body #app .overlay form.login-form .form-group input::-moz-placeholder {
   font-weight: 200;
 }
 
-body #app .overlay form.login-form .form-group input:-ms-input-placeholder {
-  text-transform: uppercase;
-  font-style: italic;
-  font-weight: 200;
-}
-
 body #app .overlay form.login-form .form-group input::placeholder {
   text-transform: uppercase;
   font-style: italic;
@@ -323,7 +317,7 @@ body #app main .home {
 body #app main .home .left {
   display: flex;
   margin: 0 auto 0 0;
-  width: calc(100% - (385px + 64px));
+  width: calc(100% - 449px);
   min-height: 100vh;
   flex-direction: column;
 }
@@ -404,7 +398,6 @@ body #app main .home .left .articles-component .article:last-child {
 }
 
 body #app main .home .right {
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   display: flex;

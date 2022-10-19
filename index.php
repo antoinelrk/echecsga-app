@@ -2,21 +2,24 @@
 <main>
         <div class="home">
             <div class="left">
-            <!-- <div class="no-article">Il n'y a aucun article disponible</div> -->
-                <div class="articles-component">
-                <?php foreach($sql->getArticles() as $key => $article) { ?>
-                    <div class="article">
-                        <div class="title-group">
-                            <h1 class="title"><?= $article->title ?></h1>
-                            <h3 class="created_at">le <?= date("d/m/Y", strtotime($article->created_at)); ?></h3>
-                        </div>
-                        <div class="content-group">
-                            <p><?= $article->content ?></p>
-                            <a class="read-more" href="#">Lire la suite</a>
-                        </div>
+                <?php if (sizeof($sql->getArticles()) === 0) { ?>
+                    <div class="no-article">Il n'y a aucun article disponible</div>
+                <?php } else { ?>
+                    <div class="articles-component">
+                        <?php foreach($sql->getArticles() as $key => $article) { ?>
+                            <div class="article">
+                                <div class="title-group">
+                                    <h1 class="title"><?= $article->title ?></h1>
+                                    <h3 class="created_at">le <?= date("d/m/Y", strtotime($article->created_at)); ?></h3>
+                                </div>
+                                <div class="content-group">
+                                    <p><?= $article->content ?></p>
+                                    <a class="read-more" href="#">Lire la suite</a>
+                                </div>
+                            </div>
+                        <?php } ?>
                     </div>
                 <?php } ?>
-                </div>
             </div>
             <div class="right">
                 <div class="flyer">
