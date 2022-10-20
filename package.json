@@ -4,16 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run development",
-    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "npm run development -- --watch",
-    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prod": "npm run production",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://oauth2:oz-zied28u13u4Gwpkqz@gitlab.com/Ymoka/echecsga-website.git"
+    "dev": "vite",
+    "build": "vite build"
   },
   "keywords": [],
   "author": "",
@@ -24,10 +16,13 @@
   "homepage": "https://gitlab.com/Ymoka/echecsga-website#readme",
   "devDependencies": {
     "cross-env": "^7.0.2",
-    "laravel-mix": "^5.0.5",
     "resolve-url-loader": "^3.1.0",
-    "sass": "^1.26.10",
+    "sass": "^1.55.0",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.12"
+  },
+  "dependencies": {
+    "vite": "^3.1.8",
+    "vite-plugin-live-reload": "^3.0.1"
   }
 }

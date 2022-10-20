@@ -206,71 +206,29 @@ body {
         footer {
             position: relative;
             display: flex;
-            margin: auto 0 0 0;
+            align-items: center;
+            justify-content: center;
+            margin-top: auto;
             width: 100%;
             height: 40px;
             background-color: $c2;
+            border-top: solid 8px #eee;
 
-            &::after {
-                content: '';
-                position: absolute;
-                top: -8px;
-                left: 0;
-                width: 100%;
-                height: 8px;
-                background-color: #eeeeee;
-            }
-
-            .copyright {
+            p {
                 display: flex;
-                margin: 0 auto;
-                width: auto;
-                height: 100%;
-                font-style: italic;
+                column-gap: 8px;
 
-                figure.copy {
+                figure {
                     display: flex;
-                    margin: auto 4px;
                     width: 16px;
                     height: 16px;
                 }
 
-                span {
-                    display: flex;
-                    margin: auto 0 auto 0;
-
-                    &.bold {
-                        margin: auto 4px auto 0;
-                        font-weight: 600;
-                    }
-                }
-
                 a {
                     display: flex;
-                    margin: auto 0 auto 4px;
-                    font-weight: 800;
-                    transition: color .1s linear;
-
-                    figure {
-                        display: flex;
-                        margin: auto 0 auto 4px;
-                        width: 16px;
-                        transition: fill .1s linear;
-                    }
-
-                    &:hover {
-                        color: $psblue;
-                        transition: color .1s linear;
-
-                        figure {
-                            fill: $psblue;
-                            transition: fill .1s linear;
-                        }
-                    }
+                    color: red;
                 }
             }
         }
-
-        // Ajouter le fond de site ici
     }
 }
